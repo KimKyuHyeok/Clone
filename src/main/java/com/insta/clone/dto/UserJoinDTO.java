@@ -8,14 +8,14 @@ import lombok.Setter;
 @Setter
 @Builder
 public class UserJoinDTO {
-    private String username;
+    private String userLoginId;
     private String password;
     private String email;
     private String name;
 
     public UserDTO toSave() {
         return UserDTO.builder()
-                .username(username)
+                .loginId(userLoginId)
                 .password(password)
                 .email(email)
                 .name(name)

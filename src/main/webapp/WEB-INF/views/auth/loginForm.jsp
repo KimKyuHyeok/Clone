@@ -7,43 +7,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
-    <link rel="stylesheet" href="/css/style.css">
-
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/images/insta.svg">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
 <body>
 <div class="container">
-    <main>
+    <main class="loginMain">
+        <!--로그인섹션-->
         <section class="login">
+            <!--로그인박스-->
             <article class="login__form__container">
+                <!--로그인 폼-->
                 <div class="login__form">
-                    <h1><img src="/images/logo.jpg" alt=""></h1>
-                    <div class="login__input">
-                        <input type="text" name="id" placeholder="전화번호, 사용자 이름 또는 이메일">
-                        <input type="password" name="password" id="password" placeholder="비밀번호">
+                    <h1><img src="/static/images/logo.jpg" alt=""></h1>
+
+                    <!--로그인 인풋-->
+                    <form class="login__input" action="/login" method="post">
+                        <input type="text" id="username" name="username" placeholder="아이디">
+                        <input type="password" id="userPassword" name="userPassword" placeholder="비밀번호">
                         <button>로그인</button>
-                    </div>
+                    </form>
+                    <!--로그인 인풋end-->
+
+                    <!-- 또는 -->
                     <div class="login__horizon">
                         <div class="br"></div>
                         <div class="or">또는</div>
                         <div class="br"></div>
                     </div>
+                    <!-- 또는end -->
+
+                    <!-- Oauth 소셜로그인 -->
                     <div class="login__facebook">
-                        <button>
-                            <i class="fab fa-facebook-square"></i>
-                            <span>Facebook으로 로그인</span>
-                        </button>
+                        <a href="/oauth2/authorization/facebook">
+                            <button>
+                                <i class="fab fa-facebook-square"></i>
+
+                                <span>Facebook으로 로그인</span>
+
+                            </button>
+                        </a>
                     </div>
+                    <!-- Oauth 소셜로그인end -->
                 </div>
+
+                <!--계정이 없으신가요?-->
                 <div class="login__register">
                     <span>계정이 없으신가요?</span>
-                    <a href="./join.html">가입하기</a>
+                    <a href="/auth/joinForm">가입하기</a>
                 </div>
+                <!--계정이 없으신가요?end-->
             </article>
         </section>
     </main>
+
 </div>
 </body>
+
 </html>

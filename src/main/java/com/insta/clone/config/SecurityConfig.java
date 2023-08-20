@@ -1,5 +1,6 @@
 package com.insta.clone.config;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,24 +13,27 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public BCryptPasswordEncoder encode() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/", "/user/**", "/image/**", "/follew/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/", "/user/**", "/image/**", "/follow/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/auth/loginForm").permitAll() // loginForm 접근을 모두 허용
+                .antMatchers("/auth/loginForm", "/auth/join", "/success").permitAll() // loginForm 접근을 모두 허용
+                .antMatchers("/success").permitAll()
                 .anyRequest()
                 .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/auth/loginForm")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/success", true);
     }
 }

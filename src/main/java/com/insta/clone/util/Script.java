@@ -1,4 +1,4 @@
-package com.insta.clone.config;
+package com.insta.clone.util;
 
 public class Script {
     public static String href(String msg, String url) {
