@@ -10,9 +10,14 @@
     <typeAliases>
         <package name="com.insta.clone.dto.UserDTO"/>
         <package name="com.insta.clone.dto.UserJoinDTO"/>
-
+        <package name="com.insta.clone.dto.ImageDTO"/>
+        <package name="com.insta.clone.dto.CommentDTO"/>
+        <package name="com.insta.clone.dto.FollowDTO"/>
+        <package name="com.insta.clone.dto.LikesDTO"/>
+        <package name="com.insta.clone.dto.TagDTO"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapper/AuthMapper.xml"/>
+        <mapper resource="mapper/FollowMapper.xml"/>
     </mappers>
 </configuration>
