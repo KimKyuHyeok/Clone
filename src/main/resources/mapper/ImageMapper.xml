@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insta.clone.mapper.ImageMapper">
+    <select id="feedImage" parameterType="Integer" resultType="Integer">
+        /*imageMapper.feedImage*/
+        SELECT to_user_id,
+               from_user_id
+        FROM follow
+        WHERE from_user_id = #{fromUserId}
+    </select>
+    <select id="imageList" parameterType="Integer" resultType="com.insta.clone.dto.ImageDTO">
+        SELECT
+            *
+        FROM image
+        WHERE user_id = #{userId}
+    </select>
+    <insert id="upload" parameterType="com.insta.clone.dto.ImageDTO" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO image (
+                           content,
+                           post_image_url,
+                           original_file_name,
+                           user_id,
+                           tag_name
+        ) VALUES (
+                  #{content},
+                  #{postImageUrl},
+                  #{originalFileName},
+                  #{userId},
+                  #{tagName}
+                         )
+    </insert>
+</mapper>

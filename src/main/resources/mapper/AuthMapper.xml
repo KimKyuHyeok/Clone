@@ -5,13 +5,13 @@
 <mapper namespace="com.insta.clone.mapper.AuthMapper">
     <insert id="join" parameterType="com.insta.clone.dto.UserDTO">
         INSERT INTO user (
-                          user_login_id,
+                          login_id,
                           password,
                           email,
                           name,
                           role
         ) VALUES (
-                  #{userLoginId},
+                  #{loginId},
                   #{password},
                   #{email},
                   #{name},
@@ -20,20 +20,21 @@
     </insert>
     <select id="findByUserLoginId" parameterType="String"
     resultType="com.insta.clone.dto.UserDTO">
+        /* AuthMapper.findByUserLoginId */
+        SELECT
+            *
+            FROM user
+        WHERE login_id = #{userLoginId}
+    </select>
+    <select id="userIdByInfo" parameterType="Integer"
+            resultType="com.insta.clone.dto.UserDTO">
         SELECT
             user_id,
-            login_id,
-            password,
             website,
             bio,
             name,
-            email,
-            phone,
-            gender,
-            profile_image,
-            provider,
-            role
-            FROM user
-        WHERE login_id = #{userLoginId}
+            profile_image
+        FROM user
+        WHERE user_id = #{userId}
     </select>
 </mapper>

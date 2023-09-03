@@ -1,18 +1,21 @@
 package com.insta.clone.dto;
 
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Getter
 @Setter
-@Builder
 @ToString
-public class UserDTO {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDTO implements UserDetails {
     private int userId;
     private String loginId;
     private String password;
@@ -28,6 +31,38 @@ public class UserDTO {
     private String provider;
 
     private String role;
+
+    private Collection<? extends GrantedAuthority> authorities;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.authorities;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getEmail();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 //    private LocalDateTime createDate;
 }

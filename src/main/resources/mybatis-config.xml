@@ -19,5 +19,7 @@
     <mappers>
         <mapper resource="mapper/AuthMapper.xml"/>
         <mapper resource="mapper/FollowMapper.xml"/>
+        <mapper resource="mapper/ImageMapper.xml"/>
+        <mapper resource="mapper/TagMapper.xml"/>
     </mappers>
 </configuration>

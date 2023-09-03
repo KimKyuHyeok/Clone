@@ -27,8 +27,8 @@
                     <!--로고end-->
 
                     <!--회원가입 인풋-->
-                    <form class="login__input" action="/auth/join" method="post">
-                        <input type="text" name="userLoginId" placeholder="아이디" required="required">
+                    <form class="login__input" action="/auth/joinForm" method="post">
+                        <input type="text" name="loginId" placeholder="아이디" required="required">
                         <input type="password" name="password" placeholder="패스워드" required="required">
                         <input type="email" name="email" placeholder="이메일" required="required">
                         <input type="text" name="name" placeholder="이름" required="required">

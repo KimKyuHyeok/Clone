@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AuthMapper {
     void join(UserDTO userDTO);
     UserDTO findByUserLoginId(String userLoginId);
+    UserDTO userIdByInfo(int userId);
 }

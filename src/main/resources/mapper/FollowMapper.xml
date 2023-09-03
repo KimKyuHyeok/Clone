@@ -2,13 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.insta.clone.mapper.AuthMapper">
-    <insert id="following" parameterType="Integer">
+<mapper namespace="com.insta.clone.mapper.FollowMapper">
+    <insert id="following" parameterType="com.insta.clone.dto.FollowReqDTO">
         INSERT INTO follow (to_user_id,from_user_id,create_date)
         VALUES (#{toUserId}, #{fromUserId}, now())
     </insert>
-    <delete id="unFollow" parameterType="Integer">
+    <delete id="unFollow" parameterType="com.insta.clone.dto.FollowReqDTO">
         DELETE FROM follow
         WHERE to_user_id = #{toUserId} AND from_user_id = #{fromUserId}
     </delete>
+    <select id="follow" parameterType="Integer" resultType="com.insta.clone.dto.FollowReqDTO">
+        SELECT * FROM follow
+        WHERE from_user_id = #{fromUserId}
+    </select>
 </mapper>

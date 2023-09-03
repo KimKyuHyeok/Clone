@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
 @Data
 public class TagDTO {
     private int id;
-    private String name;
+    private String tagName;
+    private int imageId;
 
     private ImageDTO imageDTO;
 
